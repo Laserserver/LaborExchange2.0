@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b220b7db492a44fe97880865581fbc61" Name="Diagram1">
+        <EntityTypeShape EntityType="LaborExchange2Model.Company" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaborExchange2Model.CompanySize" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaborExchange2Model.CompanyType" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaborExchange2Model.Login" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaborExchange2Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaborExchange2Model.Vacancy" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="LaborExchange2Model.FK_Company_CompanySize" ManuallyRouted="false" />
+        <AssociationConnector Association="LaborExchange2Model.FK_Company_CompanyType" ManuallyRouted="false" />
+        <AssociationConnector Association="LaborExchange2Model.FK_Company_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="LaborExchange2Model.FK_Vacancy_Company" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
