@@ -11,7 +11,7 @@ namespace LaborExchange2._0
 {
 
 
-    public partial class JQuery1
+    public partial class DPP
     {
 
         /// <summary>
@@ -22,23 +22,5 @@ namespace LaborExchange2._0
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// PH1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PH1;
-
-        /// <summary>
-        /// PH2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PH2;
     }
 }
