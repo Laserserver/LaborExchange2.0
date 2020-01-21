@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JQuery.aspx.cs" Inherits="LaborExchange2._0.JQuery1" %>
+<%@ Register Assembly="Controls" Namespace="Controls" TagPrefix="lec" %>
 
 <!DOCTYPE html>
 
@@ -20,6 +21,7 @@
         <asp:Label runat="server">Кнопка 2</asp:Label>
         <hr/>
         <asp:PlaceHolder ID="PH2" runat="server"></asp:PlaceHolder>
+        <lec:NewNameBox runat="server" ID="nameBox"></lec:NewNameBox>
     </form>
 </body>
 </html>

@@ -10,6 +10,7 @@ using System.Web.Http.Cors;
 using BLINterfaces;
 using DBLibrary;
 using ModelsLibrary;
+using RealServices;
 
 namespace Services.Controllers
 {
@@ -20,7 +21,8 @@ namespace Services.Controllers
 
         public CompanyTypeController()
         {
-            _service = new TestLibrary.TestService();
+            //_service = new TestLibrary.TestService();
+            _service = new RealService();
         }
         public CompanyTypeController(ICTService service)
         {

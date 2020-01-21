@@ -44,7 +44,7 @@ namespace RealServices
             using (var c = new LaborExchange2Entities1())
             {
                 var rr = new PagedResult<CompanyTypeModel>();
-                var tt = c.CompanyType;
+                var tt = (from o in c.CompanyType select o).OrderBy(o => o.ID);
                 int cc = tt.Count();
                 var ttx = tt.Skip((page - 1) * pagecount).Take(pagecount).ToArray();
 
@@ -54,7 +54,11 @@ namespace RealServices
                     res.Add(new CompanyTypeModel { ID = item.ID, Company = item.Type });
                 }
                 rr.Page = res.ToArray();
-                rr.PageCount = tt.Count() / pagecount + 1;
+                var tc = tt.Count();
+                if(tc % pagecount == 0)
+                    rr.PageCount = tc / pagecount;
+                else
+                    rr.PageCount = tc / pagecount + 1;
                 return rr;
             }
         }

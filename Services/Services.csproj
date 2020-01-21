@@ -274,6 +274,10 @@
       <Project>{eb17b7ed-637c-4eca-b92f-84d0eb630c0f}</Project>
       <Name>ModelsLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RealServices\RealServices.csproj">
+      <Project>{344cadbc-9cf6-4bd7-9d19-8380ff590ee7}</Project>
+      <Name>RealServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestLibrary\TestLibrary.csproj">
       <Project>{15094ded-556f-4d0d-a0b3-ab4e62d882ed}</Project>
       <Name>TestLibrary</Name>
