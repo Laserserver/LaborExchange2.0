@@ -30,7 +30,6 @@ namespace Services.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public HttpResponseMessage Get()
         {
-
             var resp = Request.CreateResponse(HttpStatusCode.OK, GetRes(), Configuration.Formatters.JsonFormatter);
             resp.Headers.Add("X-Custom-Header", "hello");
             return resp;
@@ -52,19 +51,52 @@ namespace Services.Controllers
 
 
 
-        // POST api/values
-        public void Post([FromBody]string value)
+        // POST api/companytype
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpPost]
+        public string Post([FromBody] MyModel mdl)
         {
+            using (var context = new LaborExchange2Entities1())
+            {
+                if (mdl == null || mdl.NewName == "")
+                    return null;
+
+                if (Enumerable.Any(context.CompanyType, companyType => companyType.Type == mdl.NewName))
+                {
+                    return "Already exists";
+                }
+
+                CompanyType ct = new CompanyType
+                {
+                    Type = mdl.NewName
+                };
+                context.CompanyType.Add(ct);
+                try
+                {
+                    context.SaveChanges();
+                    return "OK";
+                }
+                catch (Exception exception)
+                {
+                    return exception.Message;
+                }
+            }
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        // PUT api/companytype/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpPut]
+        public void Put(int id, [FromBody] MyModel mdl)
         {
+
         }
 
-        // DELETE api/values/5
+        // DELETE api/companytype/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpDelete]
         public void Delete(int id)
         {
+
         }
     }
 }

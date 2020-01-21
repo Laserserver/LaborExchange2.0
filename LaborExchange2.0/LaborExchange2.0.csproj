@@ -87,6 +87,7 @@
     <Content Include="DPP.aspx" />
     <Content Include="JQuery.aspx" />
     <Content Include="MyControl.ascx" />
+    <Content Include="Scripts\cdpp.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
     <Content Include="tmpl\ctitem.html" />

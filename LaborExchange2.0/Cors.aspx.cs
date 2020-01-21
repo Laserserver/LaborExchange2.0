@@ -11,7 +11,21 @@ namespace LaborExchange2._0
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack)
+                return;
+        }
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
