@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -35,14 +37,35 @@ namespace Services.Controllers
             return resp;
         }
 
-        private PagedResult<CompanyTypeModel> GetRes()
+        // GET api/companytype
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public HttpResponseMessage Get(int id)
+        {
+            var resp = Request.CreateResponse(HttpStatusCode.OK, GetRes(id), Configuration.Formatters.JsonFormatter);
+            resp.Headers.Add("X-Custom-Header", "hello");
+            return resp;
+        }
+
+        private PagedResult<CompanyTypeModel> GetRes(int id = -1)
         {
             using (var c = new LaborExchange2Entities1())
             {
                 var rr = new PagedResult<CompanyTypeModel>();
                 var tt = c.CompanyType;
                 int cc = tt.Count();
-                var res = tt.Select(companyType => new CompanyTypeModel {ID = companyType.ID, Company = companyType.Type}).ToList();
+
+                List<CompanyTypeModel> res;
+                res = id == -1 ? 
+                    tt.Select(companyType => new CompanyTypeModel
+                    {
+                        ID = companyType.ID,
+                        Company = companyType.Type
+                    }).ToList() :
+                    (from companyType in tt where companyType.ID == id select new CompanyTypeModel
+                    {
+                        ID = companyType.ID, 
+                        Company = companyType.Type
+                    }).ToList();
                 rr.Page = res.ToArray();
                 rr.PageCount = 1;
                 return rr;
@@ -76,6 +99,13 @@ namespace Services.Controllers
                     context.SaveChanges();
                     return "OK";
                 }
+                catch (DbException dbex)
+                {
+                    return 
+                        dbex.ToString();
+
+                    
+                }
                 catch (Exception exception)
                 {
                     return exception.Message;
@@ -86,17 +116,73 @@ namespace Services.Controllers
         // PUT api/companytype/5
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPut]
-        public void Put(int id, [FromBody] MyModel mdl)
+        public HttpResponseMessage Put(int id, [FromBody] MyModel mdl)
         {
+            if(id == -1 || mdl?.NewName == null)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            try
+            {
+                using (var context = new LaborExchange2Entities1())
+                {
+                    var o = (from c in context.CompanyType where c.ID == id select c).FirstOrDefault();
+                    if (o == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
+                    }
+                    o.Type = mdl.NewName;
+                    context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+            }
+            catch (DbUpdateException dbex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Conflict,
+                    dbex.ToString()
 
+                );
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError,
+                    ex.ToString()
+                );
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // DELETE api/companytype/5
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpDelete]
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
 
+            try
+            {
+                using (var context = new LaborExchange2Entities1())
+                {
+                    var o = (from c in context.CompanyType where c.ID == id select c).FirstOrDefault();
+                    if (o == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
+                    }
+                    context.CompanyType.Remove(o);
+                    context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+            }
+            catch (DbUpdateException dbex)
+            {
+                return Request.CreateResponse(HttpStatusCode.Conflict,
+                    dbex.ToString()
+
+                );
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError,
+                    ex.ToString()
+                );
+            }
         }
     }
 }

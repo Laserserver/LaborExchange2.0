@@ -18,18 +18,12 @@
         <table>
             <thead>
                 <tr>
-                    <th id="ID" class="clickableTH sortedAsc">
-                        ID
+                    <th id="ID" class="clickableTH sortedAsc">ID
                     </th>
-                    <th id="Company" class="clickableTH">
-                        Название
+                    <th id="Company" class="clickableTH">Название
                     </th>
-                    <th>
-					
-                    </th>
-                    <th>
-					
-                    </th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,25 +31,20 @@
         </table>
     </div>
 
-    <form runat="server">
-        <div id="formDivs" runat="server">
-            <div id="rdiv" runat="server">
-                <h4>Название типа компании:</h4>
-                <asp:Label Text="text" runat="server" ID="lblOldName" />
-                <br />
-                <asp:Button Text="Сохранить" runat="server" ID="btnSave" />
-                <asp:Label runat="server" Visible="False" ID="errorLbl"></asp:Label>
-                <br />
-                <asp:Button Text="Удалить" runat="server" ID="btnDelete" />
-                
-            </div>
-        </div>
-    </form>
-<hr/>
-<h4>Новое название:</h4>
-<input type="text" id="nameBox"/>
-<span id="btnNew">Добавить</span>
-<hr/>
+    <hr />
+    <div id="editable">
+        <h4>Старое название:</h4>
+        <span id="oldName"></span>
+        <h4>Новое название:</h4>
+        <input type="text" id="newNameBox" />
+        <span id="btnSave">Сохранить</span>
+        <hr />
+    </div>
+    <hr />
+    <h4>Новый элемент:</h4>
+    <input type="text" id="nameBox" />
+    <span id="btnNew">Добавить</span>
+    <hr />
 
 </body>
 </html>
