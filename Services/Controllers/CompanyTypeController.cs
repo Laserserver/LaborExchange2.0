@@ -20,7 +20,7 @@ namespace Services.Controllers
 
         public CompanyTypeController()
         {
-
+            _service = new TestLibrary.TestService();
         }
         public CompanyTypeController(ICTService service)
         {
@@ -32,44 +32,27 @@ namespace Services.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public HttpResponseMessage Get()
         {
-            var resp = Request.CreateResponse(HttpStatusCode.OK, GetRes(), Configuration.Formatters.JsonFormatter);
+            var resp = Request.CreateResponse(HttpStatusCode.OK, _service.GetCTs(), Configuration.Formatters.JsonFormatter);
             resp.Headers.Add("X-Custom-Header", "hello");
             return resp;
         }
 
-        // GET api/companytype
+        // GET api/companytype?id=7
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public HttpResponseMessage Get(int id)
         {
-            var resp = Request.CreateResponse(HttpStatusCode.OK, GetRes(id), Configuration.Formatters.JsonFormatter);
+            var resp = Request.CreateResponse(HttpStatusCode.OK, _service.GetCTs(id), Configuration.Formatters.JsonFormatter);
             resp.Headers.Add("X-Custom-Header", "hello");
             return resp;
         }
 
-        private PagedResult<CompanyTypeModel> GetRes(int id = -1)
+        // GET api/companytype?page=1&pagecount=7
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public HttpResponseMessage Get(int page, int pagecount)
         {
-            using (var c = new LaborExchange2Entities1())
-            {
-                var rr = new PagedResult<CompanyTypeModel>();
-                var tt = c.CompanyType;
-                int cc = tt.Count();
-
-                List<CompanyTypeModel> res;
-                res = id == -1 ? 
-                    tt.Select(companyType => new CompanyTypeModel
-                    {
-                        ID = companyType.ID,
-                        Company = companyType.Type
-                    }).ToList() :
-                    (from companyType in tt where companyType.ID == id select new CompanyTypeModel
-                    {
-                        ID = companyType.ID, 
-                        Company = companyType.Type
-                    }).ToList();
-                rr.Page = res.ToArray();
-                rr.PageCount = 1;
-                return rr;
-            }
+            var resp = Request.CreateResponse(HttpStatusCode.OK, _service.GetPagedCTs(page, pagecount), Configuration.Formatters.JsonFormatter);
+            resp.Headers.Add("X-Custom-Header", "hello");
+            return resp;
         }
 
 
@@ -84,7 +67,8 @@ namespace Services.Controllers
                 if (mdl == null || mdl.NewName == "")
                     return null;
 
-                if (Enumerable.Any(context.CompanyType, companyType => companyType.Type == mdl.NewName))
+                if (Enumerable.Any(context.CompanyType, companyType => companyType.Type ==
+                mdl.NewName))
                 {
                     return "Already exists";
                 }
@@ -147,7 +131,6 @@ namespace Services.Controllers
                     ex.ToString()
                 );
             }
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // DELETE api/companytype/5

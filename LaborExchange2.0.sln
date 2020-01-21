@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLINterfaces", "BLINterface
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{8BDED096-3FAF-4C17-BDA6-ABB4FE55D0F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibrary", "TestLibrary\TestLibrary.csproj", "{15094DED-556F-4D0D-A0B3-AB4E62D882ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealServices", "RealServices\RealServices.csproj", "{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{8BDED096-3FAF-4C17-BDA6-ABB4FE55D0F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BDED096-3FAF-4C17-BDA6-ABB4FE55D0F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BDED096-3FAF-4C17-BDA6-ABB4FE55D0F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15094DED-556F-4D0D-A0B3-AB4E62D882ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15094DED-556F-4D0D-A0B3-AB4E62D882ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15094DED-556F-4D0D-A0B3-AB4E62D882ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15094DED-556F-4D0D-A0B3-AB4E62D882ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

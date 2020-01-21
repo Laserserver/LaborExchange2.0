@@ -11,9 +11,9 @@
     <h1>Hello</h1>
     <a href="JQuery.aspx">5. JQuery</a>
     <hr />
-    <a href="Cors.aspx">6, 7. Cors</a>
+    <a href="Cors.aspx">6, 7, 8. DELETE, PUT, POST, Cors</a>
     <hr />
-    <a href="DPP.aspx">8. DELETE, PUT, POST
+    <a href="Table.aspx">10. Листание выборки
     </a>
     <hr />
 </body>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6CF30933-2EE3-4C1A-9883-3F19AE5F1C4D}</ProjectGuid>
+    <ProjectGuid>{344CADBC-9CF6-4BD7-9D19-8380FF590EE7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BLINterfaces</RootNamespace>
-    <AssemblyName>BLINterfaces</AssemblyName>
+    <RootNamespace>RealServices</RootNamespace>
+    <AssemblyName>RealServices</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,14 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICTService.cs" />
+    <Compile Include="RealService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLINterfaces\BLINterfaces.csproj">
+      <Project>{6cf30933-2ee3-4c1a-9883-3f19ae5f1c4d}</Project>
+      <Name>BLINterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBLibrary\DBLibrary.csproj">
+      <Project>{c9a313bc-f793-400f-9f49-e715745f3ca3}</Project>
+      <Name>DBLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelsLibrary\ModelsLibrary.csproj">
       <Project>{eb17b7ed-637c-4eca-b92f-84d0eb630c0f}</Project>
       <Name>ModelsLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

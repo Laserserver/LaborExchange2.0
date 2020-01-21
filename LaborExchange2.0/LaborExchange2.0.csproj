@@ -84,13 +84,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cors.aspx" />
-    <Content Include="DPP.aspx" />
+    <Content Include="Scripts\table.js" />
+    <Content Include="Table.aspx" />
     <Content Include="JQuery.aspx" />
     <Content Include="MyControl.ascx" />
     <Content Include="Scripts\cdpp.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery.tmpl.min.js" />
     <Content Include="tmpl\ctitem.html" />
+    <Content Include="tmpl\ctind.html" />
     <Content Include="Web.config" />
     <Content Include="Index.aspx" />
   </ItemGroup>
@@ -102,12 +104,12 @@
     <Compile Include="Cors.aspx.designer.cs">
       <DependentUpon>Cors.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DPP.aspx.cs">
-      <DependentUpon>DPP.aspx</DependentUpon>
+    <Compile Include="Table.aspx.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DPP.aspx.designer.cs">
-      <DependentUpon>DPP.aspx</DependentUpon>
+    <Compile Include="Table.aspx.designer.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
     </Compile>
     <Compile Include="JQuery.aspx.cs">
       <DependentUpon>JQuery.aspx</DependentUpon>
